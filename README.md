@@ -36,8 +36,11 @@ We address **How to create a poster from a paper** and **How to evaluate poster.
 ```
 docker build -t paper2poster:ubuntu24.04 .
 
+# Set your OpenAI API Key
+# Create a folder "pdfs", place target PDF in it.
+# Revise this command to point to this PDF file.
 docker run --gpus all --rm \
-      -e OPENAI_API_KEY="YOUR_OPENAI_KEY" \
+      -e OPENAI_API_KEY="sk-YOUR_OPENAI_KEY" \
       -v ./pdfs/:/data \
       -v ./output:/output \
       -w /app \
@@ -49,10 +52,7 @@ docker run --gpus all --rm \
           --poster_width_inches=48 \
           --poster_height_inches=36 && \
       cp -r '<4o_4o>_generated_posters'/* /output/"
-
 ```
-
-
 
 ## 🛠️ Installation
 Our Paper2Poster supports both local deployment (via [vLLM](https://docs.vllm.ai/en/v0.6.6/getting_started/installation.html)) or API-based access (e.g., GPT-4o).
